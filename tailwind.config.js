@@ -12,7 +12,10 @@ module.exports = {
         'grayish-violet': 'hsl(257, 7%, 63%)',
         'very-dark-blue': 'hsl(255, 11%, 22%)',
         'very-dark-violet': 'hsl(260, 8%, 14%)'
-      }
+      },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'] 
+      },
     },
   },
   plugins: [],
