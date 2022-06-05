@@ -7,7 +7,7 @@ import './Welcome.css'
 function Welcome() {
 
     return (
-        <section id='welcome' className='mb-20'>
+        <section id='welcome' className='mb-40'>
             <div className='overflow-x-hidden'>
                 <img src={banner} className='welcome__banner' />
             </div>
