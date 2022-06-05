@@ -1,17 +1,15 @@
 import Header from './components/Header'
 import Welcome from './components/Welcome'
-// import ShortenInput from './components/ShortenInput'
 import Features from './components/Features'
+import CallAction from './components/CallAction'
 
 function App() {
   return (
     <div className="App font-poppins">
       <Header />
       <Welcome />
-      {/* <div className='relative'> */}
-        {/* <ShortenInput /> */}
-        <Features />
-      {/* </div> */}
+      <Features />
+      <CallAction />
     </div>
   );
 }
