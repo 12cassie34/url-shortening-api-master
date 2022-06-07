@@ -9,7 +9,7 @@ function Welcome() {
     return (
         <section id='welcome' className='mb-40'>
             <div className='overflow-x-hidden'>
-                <img src={banner} className='welcome__banner' />
+                <img src={banner} className='welcome__banner mx-auto' />
             </div>
             <div className='mt-8 text-center'>
                 <h1 className='text-4xl font-bold'>More than just shorter links</h1>
