@@ -67,19 +67,19 @@ const footerLinks = [
 const socialMediaLink = [
     {
         icon: facebook,
-        link: '#'
+        link: '#facebook'
     },
     {
         icon: twitter,
-        link: '#'
+        link: '#twitter'
     },
     {
         icon: pinterest,
-        link: '#'
+        link: '#pinterest'
     },
     {
         icon: instagram,
-        link: '#'
+        link: '#instagram'
     }
 ]
 
@@ -92,12 +92,12 @@ function Footer() {
             <div>
                 { footerLinks.map(group => {
                     return (
-                        <div className='pb-10'>
+                        <div key={group.title} className='pb-10'>
                             <h5 className='mb-4'>{ group.title }</h5>
                             <ul className='text-custom-gray'>
                                 { group.links.map(link => {
                                     return (
-                                        <li className='mb-2'>
+                                        <li key={link.label} className='mb-2'>
                                             <a href={link.link}>{link.label}</a>
                                         </li>
                                     )
@@ -112,7 +112,7 @@ function Footer() {
             <div className='flex justify-between items-center mx-auto w-48'>
                 { socialMediaLink.map(link => {
                     return (
-                        <a href={link.link}>
+                        <a key={link.link} href={link.link}>
                             <img src={link.icon} />
                         </a>
                     )

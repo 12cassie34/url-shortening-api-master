@@ -1,5 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
+// import { configureStore } from '@reduxjs/toolkit'
 
-const store = configureStore({})
+// const rootStore = configureStore({
+//     reducer: {
+//         viewport: authSlice.reducer,
+//     },
+//     state: {
+//         viewportWidth: window.innerWidth
+//     }
+// })
 
-export default store
+// export default rootStore
