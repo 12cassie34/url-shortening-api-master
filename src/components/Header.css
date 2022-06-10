@@ -1,0 +1,12 @@
+@media (min-width: 1280px) {
+    .auth-btn:nth-child(2) {
+        margin-left: 1rem;
+        background-color: hsl(180, 66%, 49%);
+        color: white;
+    }
+    .auth-btn:nth-child(2):hover {
+        border: 2px solid hsl(180, 66%, 49%);
+        background-color: white;
+        color: hsl(0, 0%, 75%);
+    }
+}

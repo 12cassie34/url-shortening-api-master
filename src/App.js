@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 import Header from './components/Header'
 import Welcome from './components/Welcome'
 import Features from './components/Features'
@@ -5,13 +7,25 @@ import CallAction from './components/CallAction'
 import Footer from './components/Footer'
 
 function App() {
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
+  window.addEventListener('resize', () => { setViewportWidth(window.innerWidth) })
+
+  const [isInBigScreen, setIsInBigScreen] = useState(false) 
+  useEffect(() => {
+      if (viewportWidth >= 1280) {
+          setIsInBigScreen(true)
+      } else {
+          setIsInBigScreen(false)
+      }
+  }, [viewportWidth])
+  
   return (
     <div className="App font-poppins">
-      <Header />
-      <Welcome />
-      <Features />
-      <CallAction />
-      <Footer />
+      <Header isInBigScreen={isInBigScreen} />
+      <Welcome isInBigScreen={isInBigScreen} />
+      <Features isInBigScreen={isInBigScreen} />
+      <CallAction isInBigScreen={isInBigScreen} />
+      <Footer isInBigScreen={isInBigScreen} />
     </div>
   );
 }
