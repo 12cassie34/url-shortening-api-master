@@ -41,7 +41,7 @@ function Header({ isInBigScreen }) {
     }
 
     return (
-        <div className='lg:mx-20'>
+        <div className='xl:mx-20'>
             <div className='flex justify-between p-4'>
                 <div className='flex'>
                     <div className='mr-12'>
