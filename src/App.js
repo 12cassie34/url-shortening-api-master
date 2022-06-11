@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App font-poppins">
       <Header isInBigScreen={isInBigScreen} />
-      <Welcome isInBigScreen={isInBigScreen} />
+      <Welcome />
       <Features isInBigScreen={isInBigScreen} />
       <CallAction isInBigScreen={isInBigScreen} />
       <Footer isInBigScreen={isInBigScreen} />
