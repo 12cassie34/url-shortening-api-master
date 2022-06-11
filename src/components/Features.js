@@ -5,6 +5,8 @@ import brandRecognition from '../images/brand-recognition.svg'
 import detailedRecords from '../images/detailed-records.svg'
 import fullyCustomizable from '../images/fully-customizable.svg'
 
+import './Feature.css'
+
 const featureArray = [
     {
         title: 'Brand Recognition',
@@ -26,18 +28,28 @@ const featureArray = [
     }
 ]
 
-function Features() {
+function Features({ isInBigScreen }) {
     return (
-        <section id='features' className='relative pb-20 bg-slate-200'>
+        <section id='features' className='relative pb-20 bg-slate-200 xl:pb-52'>
             <ShortenInput />
             <div className='text-center bg-slate-200'>
-                <h2 className='mb-5 text-2xl font-bold'>Advanced Statistics</h2>
-                <p className='px-4 text-custom-gray'>Track how your links are performing across the web with our advanced statistics dashboard.</p>
+                <h2 className='mb-5 text-2xl font-bold lg:text-4xl'>Advanced Statistics</h2>
+                <p className='px-4 text-custom-gray lg:mx-auto lg:w-5/12'>Track how your links are performing across the web with our advanced statistics dashboard.</p>
             </div>
-            <div className='mt-20'>
-                { featureArray.map(feature => {
-                    return <Feature key={feature.title} title={feature.title} content={feature.content} icon={feature.icon} isLinked={feature.isLinked} />
-                }) }
+            <div className='mt-20 lg:flex lg:justify-between lg:mx-20'>
+                {featureArray.map(feature => {
+                    const isHorizontalLink = feature.isLinked && isInBigScreen
+                    return (
+                        <div className='featrue-card-container lg:flex'>
+                            <Feature key={feature.title} isInBigScreen={isInBigScreen} title={feature.title} content={feature.content} icon={feature.icon} isLinked={feature.isLinked} />
+                            { isHorizontalLink &&
+                                <div className='relative lg:flex lg:items-center'>
+                                    <div className='feature-link-line w-12 h-2 bg-cyan'></div>
+                                </div>
+                            }
+                        </div>
+                    )
+                })}
             </div>
         </section>
     )

@@ -1,3 +1,13 @@
 .feature-icon-container {
     top: -2rem;
 }
+
+@media (min-width: 1280px) {
+    .featrue-card-container:nth-child(2) {
+        transform: translateY(2rem);
+    }
+
+    .featrue-card-container:nth-child(3) {
+        transform: translateY(4rem);
+    }
+}
