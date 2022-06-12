@@ -24,7 +24,7 @@ function App() {
       <Header isInBigScreen={isInBigScreen} />
       <Welcome />
       <Features isInBigScreen={isInBigScreen} />
-      <CallAction isInBigScreen={isInBigScreen} />
+      <CallAction />
       <Footer isInBigScreen={isInBigScreen} />
     </div>
   );

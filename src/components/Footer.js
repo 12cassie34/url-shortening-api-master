@@ -85,14 +85,16 @@ const socialMediaLink = [
 
 function Footer() {
     return (
-        <footer className='pb-16 bg-very-dark-violet text-white text-center'>
-            <div className='flex justify-center py-16'>
+        <footer className='pb-16 bg-very-dark-violet text-white text-center 
+                           xl:flex xl:justify-between xl:px-24'>
+            <div className='flex justify-center py-16 
+                            xl:block'>
                 <img src={logo} className='footer--logo' />
             </div>
-            <div>
+            <div className='xl:flex xl:mt-14 xl:w-4/12 xl:text-left'>
                 { footerLinks.map(group => {
                     return (
-                        <div key={group.title} className='pb-10'>
+                        <div key={group.title} className='pb-10 xl:mr-24'>
                             <h5 className='mb-4'>{ group.title }</h5>
                             <ul className='text-custom-gray'>
                                 { group.links.map(link => {
@@ -109,10 +111,11 @@ function Footer() {
                     )
                 }) }
             </div>
-            <div className='flex justify-between items-center mx-auto w-48'>
+            <div className='flex justify-between items-center mx-auto w-48
+                            xl:items-start xl:w-auto xl:mx-0 xl:mt-14'>
                 { socialMediaLink.map(link => {
                     return (
-                        <a key={link.link} href={link.link}>
+                        <a key={link.link} href={link.link} className='xl:mr-4'>
                             <img src={link.icon} />
                         </a>
                     )
