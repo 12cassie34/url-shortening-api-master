@@ -40,8 +40,8 @@ function Features({ isInBigScreen }) {
                 {featureArray.map(feature => {
                     const isHorizontalLink = feature.isLinked && isInBigScreen
                     return (
-                        <div className='featrue-card-container xl:flex'>
-                            <Feature key={feature.title} isInBigScreen={isInBigScreen} title={feature.title} content={feature.content} icon={feature.icon} isLinked={feature.isLinked} />
+                        <div key={feature.title} className='featrue-card-container xl:flex'>
+                            <Feature isInBigScreen={isInBigScreen} title={feature.title} content={feature.content} icon={feature.icon} isLinked={feature.isLinked} />
                             { isHorizontalLink &&
                                 <div className='relative xl:flex xl:items-center'>
                                     <div className='feature-link-line w-12 h-2 bg-cyan'></div>

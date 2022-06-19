@@ -1,12 +1,11 @@
-// import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 
-// const rootStore = configureStore({
-//     reducer: {
-//         viewport: authSlice.reducer,
-//     },
-//     state: {
-//         viewportWidth: window.innerWidth
-//     }
-// })
+import shortenedLinksSlice from './shortened-links-slice'
 
-// export default rootStore
+const rootStore = configureStore({
+    reducer: {
+        shortenedLinks: shortenedLinksSlice.reducer,
+    }
+})
+
+export default rootStore
