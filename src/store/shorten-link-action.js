@@ -11,8 +11,8 @@ export const addShortenedLinks = (newShortenedLink) => {
            const linkData = await handleFetch()
            const newLinks = {
                id: linkData.result.code,
-               origin_url: linkData.result.original_link,
-               shortened_url: linkData.result.full_short_link
+               originUrl: linkData.result.original_link,
+               shortenedUrl: linkData.result.full_short_link
             }
            dispatch(addNewShortendLinks(newLinks))
         } catch (error) {

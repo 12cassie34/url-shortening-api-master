@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux'
+
 import ShortenInput from './ShortenInput'
 import Feature from './Feature'
 
@@ -42,7 +44,7 @@ function Features({ isInBigScreen }) {
                     return (
                         <div key={feature.title} className='featrue-card-container xl:flex'>
                             <Feature isInBigScreen={isInBigScreen} title={feature.title} content={feature.content} icon={feature.icon} isLinked={feature.isLinked} />
-                            { isHorizontalLink &&
+                            {isHorizontalLink &&
                                 <div className='relative xl:flex xl:items-center'>
                                     <div className='feature-link-line w-12 h-2 bg-cyan'></div>
                                 </div>
