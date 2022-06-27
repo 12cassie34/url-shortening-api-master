@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { Link } from "react-router-dom";
 
 import logo from '../images/logo.svg'
 
@@ -24,7 +25,7 @@ function Header({ isInBigScreen }) {
     const authLinks = [
         {
             label: 'Login',
-            link: '#'
+            link: '/login'
         },
         {
             label: 'Sing Up',
@@ -58,7 +59,7 @@ function Header({ isInBigScreen }) {
                 {isInBigScreen
                     ? <div className='flex justify-between text-custom-gray'>
                         { authLinks.map(link => {
-                            return <div key={link.label} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'>{link.label}</div>
+                            return <div key={link.label} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'><Link to={link.link}>{link.label}</Link></div>
                         })}
                         </div>
                     : <div onClick={(e) => { toggleMenu(e) }} className='flex justify-center flex-col cursor-pointer'>
@@ -80,7 +81,7 @@ function Header({ isInBigScreen }) {
                         <div className='mx-auto my-6 w-72 h-px bg-gray-400 opacity-50'></div>
                         <ul>
                             {authLinks.map(link => {
-                                return <li key={link.label} className='mb-4 mx-auto py-2 w-10/12 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan'>{link.label}</li>
+                                return <li key={link.label} className='mb-4 mx-auto py-2 w-10/12 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan'><Link to={link.link}>{link.label}</Link></li>
                             })}
                         </ul>
                     </div>

@@ -7,10 +7,35 @@ import reportWebVitals from './reportWebVitals'
 
 import rootStore from '../src/store/index'
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom'
+import Login from '../src/components/Login'
+
+{/* <BrowserRouter>
+    <Routes>
+      
+        <Route index element={<Home />} />
+        <Route path="teams" element={<Teams />}>
+          <Route path=":teamId" element={<Team />} />
+          <Route path="new" element={<NewTeamForm />} />
+          <Route index element={<LeagueStandings />} />
+        </Route>
+      </Route>
+    </Routes>
+  </BrowserRouter> */}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={rootStore}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
