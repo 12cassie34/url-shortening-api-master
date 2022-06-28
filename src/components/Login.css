@@ -1,0 +1,9 @@
+.welcome__banner {
+    width: 300px;
+}
+
+@media (min-width: 1280px) {
+    .welcome__banner {
+        width: 500px;
+    }
+}
