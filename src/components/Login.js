@@ -1,18 +1,29 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { changeEmail, changePassword } from '../store/login-slice'
+import { changeLoginEmail, changeLoginPassword } from '../store/auth-slice'
+import { signUpUser } from '../store/auth-action'
 
 import banner from '../images/banner.svg'
 
 import './Login.css'
 
 function Login() {
+    const loginEmail = useSelector(state => state.auth.loginEmail)
+    const loginPassword = useSelector(state => state.auth.loginPassword)
+    
     const dispatch = useDispatch()
     const handleEmailInput = (value) => {
-        dispatch(changeEmail(value))
+        dispatch(changeLoginEmail(value))
     }
     const handlePasswordInput = (value) => {
-        dispatch(changePassword(value))
+        dispatch(changeLoginPassword(value))
+    }
+
+    const handleLogIn = () => {
+        dispatch(signUpUser({
+            email: loginEmail,
+            password: loginPassword
+        }))
     }
 
     return (
@@ -36,7 +47,7 @@ function Login() {
                     </div>
                 </form>
                 <div>
-                    <button className='mt-8 w-full h-14 bg-cyan text-white text-xl font-bold rounded-lg'>
+                    <button onClick={handleLogIn} className='mt-8 w-full h-14 bg-cyan text-white text-xl font-bold rounded-lg'>
                         Log In
                     </button>
                 </div>
