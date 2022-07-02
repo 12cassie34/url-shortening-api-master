@@ -1,4 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { onAuthStateChanged } from 'firebase/auth'
+
+import { auth } from './firebase-config'
+
+import { setCurrentUser } from './store/auth-slice'
 
 import Header from './components/Header'
 import Welcome from './components/Welcome'
@@ -18,6 +24,11 @@ function App() {
           setIsInBigScreen(false)
       }
   }, [viewportWidth])
+
+  const dispatch = useDispatch()
+  onAuthStateChanged(auth, (currentUser) => {
+    dispatch(setCurrentUser(currentUser))
+  })
   
   return (
     <div className="App font-poppins">

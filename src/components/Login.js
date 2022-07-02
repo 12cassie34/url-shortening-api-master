@@ -6,6 +6,7 @@ import { signUpUser } from '../store/auth-action'
 import banner from '../images/banner.svg'
 
 import './Login.css'
+import { auth } from '../firebase-config'
 
 function Login() {
     const loginEmail = useSelector(state => state.auth.loginEmail)
