@@ -13,6 +13,7 @@ import {
   Route,
 } from 'react-router-dom'
 import Login from '../src/components/Login'
+import SignUp from '../src/components/SignUp'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

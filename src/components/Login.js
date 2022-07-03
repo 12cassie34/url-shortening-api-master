@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from "react-router-dom"
 
 import { changeLoginEmail, changeLoginPassword } from '../store/auth-slice'
 import { signUpUser } from '../store/auth-action'
@@ -6,7 +7,6 @@ import { signUpUser } from '../store/auth-action'
 import banner from '../images/banner.svg'
 
 import './Login.css'
-import { auth } from '../firebase-config'
 
 function Login() {
     const loginEmail = useSelector(state => state.auth.loginEmail)
@@ -21,10 +21,10 @@ function Login() {
     }
 
     const handleLogIn = () => {
-        dispatch(signUpUser({
-            email: loginEmail,
-            password: loginPassword
-        }))
+        // dispatch(signUpUser({
+        //     email: loginEmail,
+        //     password: loginPassword
+        // }))
     }
 
     return (
@@ -52,6 +52,10 @@ function Login() {
                         Log In
                     </button>
                 </div>
+                <div className='mt-4 text-white'>
+                <span>Do not have an account? Sign up&nbsp;</span> 
+                <span className='text-cyan'><Link to="/signup">here!</Link></span>
+            </div>
             </div>
         </div>
     )

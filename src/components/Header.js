@@ -33,7 +33,7 @@ function Header({ isInBigScreen }) {
         },
         {
             label: 'Sign Up',
-            link: '#'
+            link: '/signup'
         },
     ]
 
@@ -55,7 +55,7 @@ function Header({ isInBigScreen }) {
     }
 
     return (
-        <div className='xl:mx-20'>
+        <div className='relative z-10 xl:mx-20'>
             <div className='flex justify-between p-4'>
                 <div className='flex'>
                     <div className='mr-12'>
@@ -72,7 +72,10 @@ function Header({ isInBigScreen }) {
                 {isInBigScreen
                     ? <div className='flex justify-between text-custom-gray'>
                         { isLogIn 
-                          ? <div onClick={() => {handleSignOut()}} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'>Log Out</div>
+                          ? <div className='flex'>
+                                <div className='flex justify-center px-6 py-2'>Hi, { currentUser?.displayName }</div>
+                                <div onClick={() => {handleSignOut()}} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'>Log Out</div>
+                            </div>
                           : authLinks.map(link => {
                             return <div key={link.label} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'><Link to={link.link}>{link.label}</Link></div>
                         })}

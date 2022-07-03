@@ -1,14 +1,20 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../firebase-config'
 
 export const signUpUser = (signUpInfo) => {
-    return async (dispatch) => {
+    return async () => {
         const handleSignUp = async () => {
-            const res = createUserWithEmailAndPassword(auth, signUpInfo.email, signUpInfo.password)
-            return res
+            await createUserWithEmailAndPassword(auth, signUpInfo.email, signUpInfo.password)
+        }
+        const handleChangeUserName = async () => {
+            const auth = getAuth();
+            await updateProfile(auth.currentUser, {
+                displayName: signUpInfo.userName
+            })
         }
         try {
-            const singUpData = await handleSignUp()
+            await handleSignUp()
+            await handleChangeUserName()
         } catch (error) {
             console.log(error)
         }

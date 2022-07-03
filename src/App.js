@@ -32,7 +32,8 @@ function App() {
       ? {
         accessToken: currentUser.accessToken,
         email: currentUser.email,
-        uid: currentUser.uid
+        uid: currentUser.uid,
+        displayName: currentUser.displayName
       } : {}
     dispatch(setCurrentUser(currentUserInfo))
   })
