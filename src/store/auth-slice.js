@@ -9,7 +9,7 @@ const authSlice = createSlice({
     },
     reducers: {
         setCurrentUser(state, value) {
-            state.currentUser = value
+            state.currentUser = value.payload
         },
         changeLoginEmail(state, value) {
             state.loginEmail = value.payload

@@ -7,7 +7,7 @@ const rootStore = configureStore({
     reducer: {
         shortenedLinks: shortenedLinksSlice.reducer,
         auth: authSlice.reducer
-    }
+    },
 })
 
 export default rootStore

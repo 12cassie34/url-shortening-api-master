@@ -1,6 +1,10 @@
 
-import { useState } from 'react'
-import { Link } from "react-router-dom";
+import { useMemo, useState } from 'react'
+import { Link } from "react-router-dom"
+import { useSelector } from 'react-redux'
+import { signOut } from 'firebase/auth'
+
+import { auth } from '../firebase-config'
 
 import logo from '../images/logo.svg'
 
@@ -28,7 +32,7 @@ function Header({ isInBigScreen }) {
             link: '/login'
         },
         {
-            label: 'Sing Up',
+            label: 'Sign Up',
             link: '#'
         },
     ]
@@ -41,6 +45,15 @@ function Header({ isInBigScreen }) {
         setIsShowNav(isShowNav => !isShowNav)
     }
 
+    const currentUser = useSelector(state => state.auth.currentUser)
+    const isLogIn = useMemo(() => {
+        return Object.keys(currentUser).length ? true : false
+    }, [currentUser])
+
+    const handleSignOut = async () => {
+        await signOut(auth)
+    }
+
     return (
         <div className='xl:mx-20'>
             <div className='flex justify-between p-4'>
@@ -48,20 +61,22 @@ function Header({ isInBigScreen }) {
                     <div className='mr-12'>
                         <img src={logo} />
                     </div>
-                    { isInBigScreen 
-                      && <div className='flex justify-between text-custom-gray'>
+                    {isInBigScreen
+                        && <div className='flex justify-between text-custom-gray'>
                             {mainLinks.map(link => {
                                 return <div key={link.label} className='mr-px px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'>{link.label}</div>
                             })}
-                         </div>
+                        </div>
                     }
                 </div>
                 {isInBigScreen
                     ? <div className='flex justify-between text-custom-gray'>
-                        { authLinks.map(link => {
+                        { isLogIn 
+                          ? <div onClick={() => {handleSignOut()}} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'>Log Out</div>
+                          : authLinks.map(link => {
                             return <div key={link.label} className='auth-btn flex justify-center px-6 py-2 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan hover:text-white focus:text-white'><Link to={link.link}>{link.label}</Link></div>
                         })}
-                        </div>
+                    </div>
                     : <div onClick={(e) => { toggleMenu(e) }} className='flex justify-center flex-col cursor-pointer'>
                         <div className='w-6 h-1 bg-custom-gray'></div>
                         <div className='my-1 w-6 h-1 bg-custom-gray'></div>
@@ -80,7 +95,9 @@ function Header({ isInBigScreen }) {
                         </ul>
                         <div className='mx-auto my-6 w-72 h-px bg-gray-400 opacity-50'></div>
                         <ul>
-                            {authLinks.map(link => {
+                            { isLogIn 
+                                ? <li onClick={() => {handleSignOut()}} className='mb-4 mx-auto py-2 w-10/12 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan'>Log Out</li>
+                                : authLinks.map(link => {
                                 return <li key={link.label} className='mb-4 mx-auto py-2 w-10/12 rounded-3xl cursor-pointer hover:bg-cyan focus:bg-cyan'><Link to={link.link}>{link.label}</Link></li>
                             })}
                         </ul>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 import { auth } from './firebase-config'
 
@@ -16,20 +16,27 @@ function App() {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
   window.addEventListener('resize', () => { setViewportWidth(window.innerWidth) })
 
-  const [isInBigScreen, setIsInBigScreen] = useState(false) 
+  const [isInBigScreen, setIsInBigScreen] = useState(false)
   useEffect(() => {
-      if (viewportWidth >= 1280) {
-          setIsInBigScreen(true)
-      } else {
-          setIsInBigScreen(false)
-      }
+    if (viewportWidth >= 1280) {
+      setIsInBigScreen(true)
+    } else {
+      setIsInBigScreen(false)
+    }
   }, [viewportWidth])
 
   const dispatch = useDispatch()
   onAuthStateChanged(auth, (currentUser) => {
-    dispatch(setCurrentUser(currentUser))
+    console.log('currentUser', currentUser)
+    const currentUserInfo = currentUser
+      ? {
+        accessToken: currentUser.accessToken,
+        email: currentUser.email,
+        uid: currentUser.uid
+      } : {}
+    dispatch(setCurrentUser(currentUserInfo))
   })
-  
+
   return (
     <div className="App font-poppins">
       <Header isInBigScreen={isInBigScreen} />
