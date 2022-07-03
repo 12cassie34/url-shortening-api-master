@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 
 import { changeLoginEmail, changeLoginPassword } from '../store/auth-slice'
-import { signUpUser } from '../store/auth-action'
+import { logInUser } from '../store/auth-action'
 
 import banner from '../images/banner.svg'
 
@@ -21,10 +21,10 @@ function Login() {
     }
 
     const handleLogIn = () => {
-        // dispatch(signUpUser({
-        //     email: loginEmail,
-        //     password: loginPassword
-        // }))
+        dispatch(logInUser({
+            email: loginEmail,
+            password: loginPassword
+        }))
     }
 
     return (
