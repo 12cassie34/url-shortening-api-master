@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { changeLoginEmail, changeLoginPassword } from '../store/auth-slice'
 import { logInUser } from '../store/auth-action'
+import { auth } from '../firebase-config'
 
 import banner from '../images/banner.svg'
 
@@ -20,11 +21,15 @@ function Login() {
         dispatch(changeLoginPassword(value))
     }
 
-    const handleLogIn = () => {
-        dispatch(logInUser({
+    const navigate = useNavigate()
+    const handleLogIn = async () => {
+        await dispatch(logInUser({
             email: loginEmail,
             password: loginPassword
         }))
+        if (auth.currentUser) {
+            navigate("/", { replace: true })
+        }
     }
 
     return (

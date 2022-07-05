@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { changeSignUpName, changeSignUpEmail, changeSignUpPassword } from '../store/auth-slice'
 import { signUpUser } from '../store/auth-action'
+import { auth } from '../firebase-config'
 
 import banner from '../images/banner.svg'
 
@@ -22,12 +23,17 @@ function SignUp() {
     const handlePassword = (password) => {
         dispatch(changeSignUpPassword(password))
     }
-    const handleSignUp = () => {
-        dispatch(signUpUser({
+
+    const navigate = useNavigate()
+    const handleSignUp = async () => {
+        await dispatch(signUpUser({
             userName: signUpName,
             email: signUpEmail,
             password: signUpPassword
         }))
+        if (auth.currentUser) {
+            navigate("/", { replace: true })
+        }
     }
 
     return (

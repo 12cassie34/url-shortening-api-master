@@ -11,7 +11,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Switch
 } from 'react-router-dom'
 import Login from '../src/components/Login'
 import SignUp from '../src/components/SignUp'
@@ -21,11 +20,9 @@ ReactDOM.render(
     <Provider store={rootStore}>
       <BrowserRouter>
         <Routes>
-          <Switch>
             <Route path="/" element={<App />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
-          </Switch>
         </Routes>
       </BrowserRouter>
     </Provider>
