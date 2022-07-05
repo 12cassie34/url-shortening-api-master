@@ -27,7 +27,6 @@ function App() {
 
   const dispatch = useDispatch()
   onAuthStateChanged(auth, (currentUser) => {
-    console.log('currentUser', currentUser)
     const currentUserInfo = currentUser
       ? {
         accessToken: currentUser.accessToken,
